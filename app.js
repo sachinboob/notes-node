@@ -10,18 +10,12 @@ const yargs = require('yargs');
 const notes = require('./notes.js');
 
 var user = os.userInfo();
-var res = notes.addNote();
-var concatinated_notes = notes.add('Sachin', 'Boob');
 
-console.log(res);
-console.log(concatinated_notes);
-console.log('Result:', notes.add(1, 2));
+var concatinated_notes = notes.add(user.username, user.homedir);
 
-console.log(_.isString(true));
-console.log(_.isString('a'));
+console.log('Concatenated note:', concatinated_notes);
+console.log('Result: ', notes.add('Sachin ', 'Boob'));
 
-var filteredArray = _.uniq(['Sachin', 1, "Sachin", 1, 2, 3, 4, 'Boob']);
-console.log(filteredArray);
 // with template string
 // fs.appendFile('greetings.txt',`Hello ${user.username} you are ${notes.age}.`,function (err){
 //   if(err){
@@ -31,8 +25,7 @@ console.log(filteredArray);
 // });
 
 // print all arguments passed as command line arguments
-console.log(process.argv);
-var command = process.argv[2];
+var command = yargs.argv.method;
 console.log('Command: ', command);
 console.log("Process: ", process.argv);
 console.log("Yargs: ", yargs.argv);
