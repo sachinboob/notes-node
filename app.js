@@ -42,7 +42,7 @@ if (command === 'add') {
 } else if (command === 'remove') {
   console.log('Removing note');
 } else if (command === 'list') {
-  console.log('Listing notes...')
+  console.log('Listing notes...');
 } else {
   console.log('Command not recognised...');
 }
