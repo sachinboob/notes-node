@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 console.log('Starting notes.js');
 
 // console.log(module);
