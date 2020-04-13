@@ -39,6 +39,8 @@ console.log("Yargs: ", yargs.argv);
 
 if (command === 'add') {
   console.log('Adding new note...');
+  console.log(notes.add('Sachin', 'Boob'));
+  console.log(notes.addNote());
 } else if (command === 'read') {
   console.log('Reading note');
 } else if (command === 'remove') {
