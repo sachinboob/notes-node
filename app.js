@@ -1,45 +1,81 @@
 /*jshint esversion: 6 */
 
-console.log("Starting app.js");
-
+// Core packages
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash'); //lodash same as the module in dependencies
-//object in package.json file
+// Libray from package.json file
 const yargs = require('yargs');
 const notes = require('./notes.js');
 
-var user = os.userInfo();
+// Customize yargs version
+yargs.version('1.1.0');
 
-var concatinated_notes = notes.add(user.username, user.homedir);
+// Create add command
+yargs.command({
+  command: 'add',
+  describe: 'Command to add a note',
+  builder: {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string'
+    },
+    body: {
+      describe: 'Note body',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: function (argv) {
+    console.log('Title: ', argv.title);
+    console.log('Body: ', argv.body);
+  }
+});
 
-console.log('Concatenated note:', concatinated_notes);
-console.log('Result: ', notes.add('Sachin ', 'Boob'));
+// Create remove command
+yargs.command({
+  command: 'remove',
+  describe: 'Command to remove a note',
+  handler: function () {
+    console.log('Removing the note!');
+  }
+});
 
-// with template string
-// fs.appendFile('greetings.txt',`Hello ${user.username} you are ${notes.age}.`,function (err){
-//   if(err){
-//     console.log('Unable to write to file...');
-//     console.log(err);
-//   }
-// });
+// Reading the note
+yargs.command({
+  command: 'read',
+  describe: 'Command to read the note',
+  handler: function () {
+    console.log('Reading the note!');
+  }
+});
 
-// print all arguments passed as command line arguments
-var command = yargs.argv.method;
-console.log('Command: ', command);
-console.log("Process: ", process.argv);
-console.log("Yargs: ", yargs.argv);
+// Listing the notes
+yargs.command({
+  command: 'list',
+  describe: 'Command to list the notes',
+  handler: function () {
+    console.log('Listing the notes!');
+  }
+});
 
-if (command === 'add') {
-  console.log('Adding new note...');
-  console.log(notes.add('Sachin', 'Boob'));
-  console.log(notes.addNote());
-} else if (command === 'read') {
-  console.log('Reading note');
-} else if (command === 'remove') {
-  console.log('Removing note');
-} else if (command === 'list') {
-  console.log('Listing notes...');
-} else {
-  console.log('Command not recognised...');
-}
+yargs.parse();
+
+//console.log(yargs.argv);
+
+// notes commands - add, remove, read, list
+
+
+// if (command === 'add') {
+//   console.log('Adding new note...');
+//   console.log(notes.add('Sachin', 'Boob'));
+// } else if (command === 'read') {
+//   console.log('Reading note');
+// } else if (command === 'remove') {
+//   console.log('Removing note');
+// } else if (command === 'list') {
+//   console.log('Listing notes...');
+// } else {
+//   console.log('Command not recognised...');
+// }
