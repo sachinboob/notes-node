@@ -67,21 +67,3 @@ yargs.command({
 });
 
 yargs.parse();
-
-//console.log(yargs.argv);
-
-// notes commands - add, remove, read, list
-
-
-// if (command === 'add') {
-//   console.log('Adding new note...');
-//   console.log(notes.add('Sachin', 'Boob'));
-// } else if (command === 'read') {
-//   console.log('Reading note');
-// } else if (command === 'remove') {
-//   console.log('Removing note');
-// } else if (command === 'list') {
-//   console.log('Listing notes...');
-// } else {
-//   console.log('Command not recognised...');
-// }
