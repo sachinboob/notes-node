@@ -7,18 +7,26 @@ const getNotes = function () {
   console.log('Returning notes...');
 };
 
-// Add a new note
+// Add a new note by checking for duplicate
 const addNote = function (title, body) {
   console.log('Adding note...');
   const notes = loadNotes();
   console.log("Current notes :- ", notes);
 
-  notes.push({
-    title: title,
-    body: body
+  // Duplicate note already present
+  const duplicateNotes = notes.filter(function (note) {
+    return note.title === title;
   });
 
-  saveNotes(notes);
+  if (duplicateNotes.length === 0) {
+    notes.push({
+      title: title,
+      body: body
+    });
+    saveNotes(notes);
+  } else {
+    console.log("Note title already taken!!!");
+  }
 };
 
 // Save note function for modularity of the code
