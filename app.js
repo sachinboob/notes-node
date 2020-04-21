@@ -60,7 +60,8 @@ yargs.command({
     }
   },
   handler(argv) {
-    console.log('Title: ', argv.title);
+    notes.readNote(argv.title);
+    //console.log('Title: ', argv.title);
   }
 });
 
@@ -69,7 +70,7 @@ yargs.command({
   command: 'list',
   describe: 'Command to list the notes',
   handler() {
-    console.log('Listing the notes!');
+    notes.listNotes();
   }
 });
 
