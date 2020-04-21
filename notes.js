@@ -14,9 +14,9 @@ const addNote = function (title, body) {
   console.log("Current notes :- ", notes);
 
   // Duplicate note already present
-  const duplicateNotes = notes.filter((note) => {
-    return note.title === title;
-  });
+  const duplicateNotes = notes.filter((note) =>
+    note.title === title
+  );
 
   if (duplicateNotes.length === 0) {
     notes.push({
@@ -58,9 +58,9 @@ const removeNote = (title) => {
   console.log("Current notes :- ", notes);
 
   // find index of the note to be removed
-  const noteIndex = notes.findIndex((note) => {
-    return note.title === title;
-  });
+  const noteIndex = notes.findIndex((note) =>
+    note.title === title
+  );
 
   if (noteIndex > -1) {
     notes.splice(noteIndex, 1);
@@ -70,6 +70,7 @@ const removeNote = (title) => {
     console.log(chalk.red('Note not found!'));
   }
 };
+
 // Export the methods
 module.exports = {
   addNote: addNote,
