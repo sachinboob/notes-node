@@ -1,15 +1,15 @@
 /*jshint esversion: 6 */
 const fs = require('fs');
 const filePath = 'notes.json';
+const chalk = require('chalk');
 
 // Return notes
 const getNotes = function () {
-  console.log('Returning notes...');
+  
 };
 
 // Add a new note by checking for duplicate
 const addNote = function (title, body) {
-  console.log('Adding note...');
   const notes = loadNotes();
   console.log("Current notes :- ", notes);
 
@@ -24,6 +24,7 @@ const addNote = function (title, body) {
       body: body
     });
     saveNotes(notes);
+    console.log(chalk.green('Note added'));
   } else {
     console.log("Note title already taken!!!");
   }
@@ -50,8 +51,28 @@ const loadNotes = function () {
   }
 };
 
+// Remove a note
+const removeNote = function (title) {
+  const notes = loadNotes();
+
+  console.log("Current notes :- ", notes);
+
+  // find index of the note to be removed
+  const noteIndex = notes.findIndex(function (note) {
+    return note.title === title;
+  });
+
+  if (noteIndex > -1) {
+    notes.splice(noteIndex, 1);
+    saveNotes(notes);
+    console.log(chalk.green('Note removed!'));
+  } else {
+    console.log(chalk.red('Note not found!'));
+  }
+};
 // Export the methods
 module.exports = {
   addNote: addNote,
-  getNotes: getNotes
+  getNotes: getNotes,
+  removeNote: removeNote
 };
