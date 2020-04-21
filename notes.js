@@ -4,12 +4,12 @@ const filePath = 'notes.json';
 const chalk = require('chalk');
 
 // Return notes
-const getNotes = function () {
+const getNotes = () => {
 
 };
 
 // Add a new note by checking for duplicate
-const addNote = function (title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes();
   console.log("Current notes :- ", notes);
 
