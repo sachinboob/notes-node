@@ -5,7 +5,7 @@ const chalk = require('chalk');
 
 // Return notes
 const getNotes = function () {
-  
+
 };
 
 // Add a new note by checking for duplicate
@@ -14,7 +14,7 @@ const addNote = function (title, body) {
   console.log("Current notes :- ", notes);
 
   // Duplicate note already present
-  const duplicateNotes = notes.filter(function (note) {
+  const duplicateNotes = notes.filter((note) => {
     return note.title === title;
   });
 
@@ -31,7 +31,7 @@ const addNote = function (title, body) {
 };
 
 // Save note function for modularity of the code
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
 
   console.log("Notes after addition :- ", notes);
   fs.writeFileSync(filePath, JSON.stringify(notes));
@@ -39,7 +39,7 @@ const saveNotes = function (notes) {
 };
 
 // Lod all current notes from the file
-const loadNotes = function () {
+const loadNotes = () => {
 
   console.log('Loading notes...');
 
@@ -52,13 +52,13 @@ const loadNotes = function () {
 };
 
 // Remove a note
-const removeNote = function (title) {
+const removeNote = (title) => {
   const notes = loadNotes();
 
   console.log("Current notes :- ", notes);
 
   // find index of the note to be removed
-  const noteIndex = notes.findIndex(function (note) {
+  const noteIndex = notes.findIndex((note) => {
     return note.title === title;
   });
 
